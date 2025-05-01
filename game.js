@@ -102,33 +102,45 @@ window.onload = function() {
 
     const slides = [
         { 
-            id: 1, 
-            title: "Welcome",
-            content: "This is the first slide",
+            id: 2, 
+            content: "Judy DJ'd at Gambier one year - MARIAH CAREY WENT OFFFFFF",
+            author: "Sara Doole",
             position: { x: 0.5, y: 0.4 }  // proportional positioning
         },
         { 
-            id: 2, 
-            title: "Journey",
-            content: "Let's explore together",
+            id: 1, 
+            content: "Judy would always help me with Hootsuite to correct external ids for their students who had issues logging in! She used to resolve those requests in 10 minutes flat by the time she found her groove!",
+            author: "Sara Doole",
             position: { x: 0.5, y: 0.4 }
         },
         { 
             id: 3, 
-            title: "Adventure",
-            content: "Discovering new things",
+            content: "For memories of working with Judy, it's really hard to pick, but here are a few random ones:\nanswering all 100000 of my questions when I started at Thinkific\ndesigning, building, and then sunsetting the billing API together\ncelebrating the joy of taxes\ncountless games of Gartic Phone and Drawsaurus",
+            author: "Charlie De Git",
             position: { x: 0.5, y: 0.4 }
         },
         { 
             id: 4, 
-            title: "Discovery",
-            content: "Learning as we go",
+            content: "she had these like... fish flip flops? Is that a real memory?",
+            author: "Ashley Fisher",
             position: { x: 0.5, y: 0.4 }
         },
         { 
             id: 5, 
-            title: "Success",
-            content: "Achievement unlocked",
+            content: "She helped me buy my first car during the pandemic :driver: also was a great mentor for me during my co-op days and led the original build of group analysts. Was on team :rugrats: when we were just a team of 3 too.\nOne day the devops guild was doing a postgres db upgrade and stayed late after a thinker Thursday. Think we had to do the upgrade around midnight so we holed up in the boardroom of the office and Judy put on the finale of love is blind for us to watch. Also had a couple other show nights at the office for Rick n Morty",
+            author: "Roxy Promhouse",
+            position: { x: 0.5, y: 0.4 }
+        },
+        {
+            id: 6,
+            content: "When I moved from Support to Engineering she helped me carry my desk across the office. Felt very symbolic.",
+            author: "Ashley Fisher",
+            position: { x: 0.5, y: 0.4 }
+        },
+        {
+            id: 7,
+            content: "I think she also helped another person buy her first bike and took her out for test rides until she felt really comfortable on it :heart:",
+            author: "Jillian Evin",
             position: { x: 0.5, y: 0.4 }
         }
     ];
@@ -232,26 +244,27 @@ window.onload = function() {
         
         const slide = slides[currentSlide];
         
-        // Draw title
-        ctx.font = slideStyles.fonts.title;
+        // Draw content
+        ctx.font = slideStyles.fonts.body;
         ctx.fillStyle = slideStyles.colors.text;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(
-            slide.title, 
+            slide.content, 
             canvas.width * slide.position.x, 
             canvas.height * slide.position.y
         );
-        
-        // Draw content
-        ctx.font = slideStyles.fonts.body;
+
+        // Draw author in italics
+        ctx.font = slideStyles.fonts.body.replace('Helvetica Neue', 'italic Helvetica Neue');
         ctx.fillText(
-            slide.content, 
+            `- ${slide.author}`, 
             canvas.width * slide.position.x, 
             canvas.height * slide.position.y + 50
         );
         
         // Draw slide number
+        ctx.font = slideStyles.fonts.body;
         ctx.fillText(
             `${currentSlide + 1}/${slides.length}`, 
             canvas.width * 0.5, 
